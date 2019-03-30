@@ -1,10 +1,410 @@
-/* moderni box model */
-html { box-sizing: border-box; }
-*, ::after, ::before { box-sizing: inherit; }
+/* google font */
+@import url('https://fonts.googleapis.com/css?family=Merriweather:400,700&subset=latin-ext');
 
-/* základní styly */
+
+/* zde je magie a jednorožci, někdy i draci */
+:root {
+	--text: #333a44;
+	--popisek: #95afc0;
+	--input: #7ed6df;
+	--input-active: #eb4d4b;
+	--okraj: #c7ecee;
+	--hlavicka: #c7ecee;
+	--jmeno: #eb4d4b;
+	--vek: #eb4d4b;
+	--pestujeme: #95afc0;
+	--spon: #333a44;
+	--stitek: #6ab04c;
+	--plus: #6ab04c;
+	--minus: #eb7775;
+}
+
+
+
+html { box-sizing: border-box; }
+*, ::after, ::before { box-sizing: border-box; }
+
 body {
-  font: 16px/1.5 sans-serif;
-  margin: 0;
-  padding: 1em;
+	margin: 0;
+	padding: 30px;
+	min-height: 100vh;
+	font: 16px/1.5 'Merriweather', serif;
+	background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+	background: #f5f5f5;
+}
+
+h1 {
+	margin: 0 0 30px 0;
+	font-size: 36px;
+	line-height: 1;
+	color: var(--text);
+	text-align: center;
+}
+
+.hlavicka {
+	display: flex;
+	max-width: 1200px;
+	margin: 20px auto 40px auto;
+	flex-direction: column;
+}
+
+.hlavicka .popisek {
+	display: block;
+	margin-bottom: 5px;
+	font-size: 14px;
+	line-height: 1;
+	text-align: center;
+	color: var(--popisek);
+}
+
+.hlavicka input,
+button {
+	padding: 8px 15px;
+	font-size: 18px;
+	line-height: 1;
+	border: 3px solid var(--input);
+	border-radius: 5px;
+	outline: 0;
+	transition: all 0.2s;
+}
+
+.hlavicka input {
+	background-color: white;
+}
+
+.hlavicka input:focus {
+	box-shadow: 0 0 30px rgba(34, 166, 179, 0.5);
+}
+
+.filtr select {
+    border: 1px solid green;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 8px 12px;
+    outline: 0;
+}
+
+.filtr label {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+    text-transform: uppercase;
+}
+
+.hlavicka button {
+	line-height: 21px;
+	color: white;
+	background-color: var(--input);
+	cursor: pointer;
+}
+
+.hlavicka button:hover {
+	background-color: var(--input-active);
+	border-color: var(--input-active);
+}
+
+.hledani {
+	flex: 1;
+	margin-right: 30px;
+}
+
+.hledani input {
+	flex: 1;
+	border-right: 0;
+	border-radius: 5px 0 0 5px;
+}
+
+.hledani button {
+	border-radius: 0 5px 5px 0;
+}
+
+.filtr,
+.prvky,
+.tlacitka {
+	display: flex;
+	margin-top: 20px;
+}
+
+.flex {
+	display: flex;
+}
+
+.hlavicka h2 {
+	margin-bottom: 0;
+}
+
+.hledana-zelenina,
+.razeni,
+.prvek,
+.velikost-zahonu,
+.tlacitka button  {
+	margin-right: 20px;
+}
+
+
+@media (max-width: 1000px) {
+
+	.hlavicka {
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.hledani {
+		flex: 1 0 100%;
+		margin-right: 0;
+		margin-bottom: 10px;
+	}
+}
+
+
+#vysledek {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+	grid-gap: 20px;
+	max-width: 1200px;
+	margin: 40px auto;
+}
+
+
+.zelenina {
+	position: relative;
+	background-color: white;
+	border: 1px solid var(--okraj);
+	border-radius: 4px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s;
+}
+
+.zelenina h2{
+	cursor: pointer;
+}
+
+a {
+	text-decoration: none;
+}
+
+.zelenina-detail {
+	position: relative;
+	background-color: white;
+}
+
+.vybrane {
+	border: 2px solid green;
+}
+
+.zahon-vypis {
+	background-color: white;
+	border: 1px solid var(--okraj);
+	border-radius: 4px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	margin-right: 20px;
+	padding: 10px;
+}
+
+.zelenina:hover {
+	box-shadow: 0 6px 15px rgba(72, 52, 212, 0.15);
+	transform: translateY(-3px);
+}
+
+.foto {
+	height: 100px;
+	background-color: var(--hlavicka);
+	background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+	position: relative;
+	padding: 10px;
+}
+
+.foto img {
+	display: block;
+	width: 120px;
+	margin: 0 auto;
+	border: 2px solid white;
+	border-radius: 50%;
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.vyseti,
+.plus,
+.minus {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	color: white;
+	font-size: 14px;
+	line-height: 30px;
+	font-weight: bold;
+	text-align: center;
+	border-radius: 50%;
+	transform: translate(35px, -45px);
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.vyseti {
+	right: 50px;
+	top: 50px;
+	background-color: var(--vek);
+	cursor: pointer;
+}
+
+.plus {
+	right: 60px;
+	bottom: -60px;
+	background-color: var(--plus);
+}
+
+.plus:hover,
+.minus:hover {
+	border: 2px solid black;
+	cursor: pointer;
+}
+
+.minus {
+	left: -10px;
+	bottom: -60px;
+	background-color: var(--minus);
+}
+
+.vse {
+	margin-top: 20px;
+}
+
+.detaily {
+	padding: 40px 15px 15px 15px;
+	text-align: center;
+	position: relative;
+}
+
+.detaily h2 {
+	margin: 0 0 3px 0;
+	font-size: 18px;
+	color: var(--jmeno);
+}
+
+.ikonky img,
+.pestujeme img,
+.pozadavky img {
+	width: 20px;
+}
+
+.pestujeme {
+	margin: 0;
+	color: var(--pestujeme);
+	font-size: 13px;
+	line-height: 1;
+}
+
+.pozadavky {
+	text-align: left;
+}
+
+.spon {
+	margin: 15px 0 0 0;
+	font-size: 14px;
+	line-height: 1;
+	color: var(--spon) ;
+}
+
+.zahon {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	padding: 4px 8px 4px 6px;
+	font-size: 12px;
+	line-height: 1;
+	border-radius: 4px 0px 12px 0;
+	background-color: var(--stitek);
+	color: white;
+	z-index: 1;
+}
+
+.vyber-zeleniny {
+	display: flex;
+
+}
+
+.kombinace {
+	margin-top: 20px;
+	display: flex;
+}
+
+.soused {
+	padding: 10px;
+	margin: 10px;
+	border: 1px dotted rgb(82, 153, 82);
+	border-radius: 4px;
+}
+
+ul {
+	margin-top: 0;
+	padding-top: 0;
+}
+
+.tlacitko-stred {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	visibility: hidden;
+}
+
+.tvor {
+	margin-left: 30px;
+	background: var(--primary-active);
+	margin: 1px black solid;
+	border-radius: 5px;
+	font-size: 20px;
+}
+
+.nastav-zahony,
+#nastav-zahony {
+	display: flex;
+	align-items: flex-start;
+	justify-content: start;
+	flex-direction: column;
+	margin-top: 20px;
+}
+
+.parametr input {
+	margin-left: 20px;
+}
+
+.pozadavky {
+	width: 200px;	
+}
+
+
+fieldset label {
+	margin-right: 10px;
+}
+
+.zahonek {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;	
+}
+
+.zahony {
+	color: var(--primary);
+}
+
+.zahon {
+	border: 1px yellow dotted;
+	padding: 10px;
+}
+
+.zahon h3 {
+	margin-top: 0;
+}
+
+.seznam {
+	margin-right: 30px;
+}
+
+.hranice-zahonu {
+	border: 2px red solid;
+	margin: 30px auto;
+	padding: 20px;
 }
