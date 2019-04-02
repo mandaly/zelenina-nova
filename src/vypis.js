@@ -8,14 +8,15 @@ export default class Vypis {
     }
   
     //projdi zelenina-data a vypiš profily všech zelenin
-    zeleninaAllList(data){
-        data.forEach(vegetable => {
+    zeleninaAllList(zeleninaData){
+        zeleninaData.forEach(vegetable => {
             let zelenina = new Zelenina(vegetable.jmeno, vegetable.obrazek, vegetable.sklizeno, vegetable.vyseti, vegetable.sklizeni, vegetable.ziviny, vegetable.prikryti, vegetable.opora, vegetable.predpestovat, vegetable.pocet, vegetable.vzdalenostDelka, vegetable.vzdalenostSirka, vegetable.meziradek, vegetable.kamaradi, vegetable.nepratele)
             this.vypis.push(zelenina);
             zelenina.renderHTML(); //vypiš info do medailonku
         });
     }
 
+    //zatím nic
     schovat(event){
         if(this.currentZelenina !== null){
             this.currentZelenina = null;
@@ -24,6 +25,7 @@ export default class Vypis {
         };
     }
 
+    //zatím nic
     showDetail(event){
         schovat();
 
