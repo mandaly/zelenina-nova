@@ -1,8 +1,12 @@
 /* import modulů */
 import Zelenina from './zelenina';
+import Vypis from './vypis';
+import Vyber from './vyber';
+//import Filtry from './filtry';
 
-//projdi zelenina-data a vypiš profily zelenin
+/* založíme objekt vypis (třída Vypis) */
+let vypis = new Vypis();
 
-console.log("jsem zelenina");
+//vypíšeme všechny zeleniny
+vypis.zeleninaAllList();
 
-//Zelenina.renderHTML()

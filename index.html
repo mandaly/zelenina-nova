@@ -11,6 +11,98 @@
 
   <h1>Zahradní plánovač</h1>
 
+  <form action="">
+
+    <div class="hledani">
+        <div class="prvky">
+            <!-- při stisku tlačítka najít kontakty, které obsahují text zadaný v políčku -->
+            <div class="hledana-zelenina">
+                <input id="jmeno" onkeyup="hledat()" name="jmeno" type="text" max-length="20" placeholder="Co chceš set?" autocomplete="off">
+                <button onclick="hledat()">Hledat</button>
+            </div>
+       
+            <!-- kolik máš záhonů -->
+            <div class="pocet-zahonu">
+                <input id="pocet-zahonu" name="pocet-zahonu" type="number" max-length="20" placeholder="Kolik máš záhonů" autocomplete="off">
+                <button onclick="vypisFormulare()">Zadat detaily</button>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="filtr">
+            <!-- filtrovat podle typu záhonu -->
+            <div class="prvek">
+                <label for="zahony">Podle typu záhonu</label>
+                <select onchange="hledat()" id="zahony">
+                    <option value=""></option>
+                    <option value="A">Záhon A</option>
+                    <option value="B">Záhon B</option>
+                    <option value="C">Záhon C</option>
+                </select>
+            </div>
+
+            <!-- filtrovat podle sklízené části -->
+            <div class="prvek">
+                <label for="sklizeno">Podle pěstované části</label>
+                    <select onchange="hledat()" id="sklizeno">
+                        <option value=""></option>
+                        <option>list</option>
+                        <option>plod</option>
+                        <option>květ</option>
+                        <option>kořen</option>
+                    </select>
+            </div>
+
+            <!-- filtrovat podle měsíce zasetí -->
+            <div class="prvek">
+                <label for="mesic">Kdy to chceš set</label>
+                    <select onchange="hledat()" id="mesic">
+                        <option value=""></option>
+                        <option value="3">březen</option>
+                        <option value="4">duben</option>
+                        <option value="5">květen</option>
+                        <option value="6">červen</option>
+                        <option value="7">červenec</option>
+                        <option value="8">srpen</option>
+                        <option value="9">září</option>
+                        <option value="10">říjen</option>
+                     
+                    </select>
+            </div>
+
+            <div class="prvek">
+                    <label for="opora">Potřebuje oporu?</label>
+                    <select onchange="hledat()" id="opora">
+                        <option value=""></option>
+                        <option value="A">ano</option>
+                        <option value="N">ne</option>
+                    </select>
+            </div>
+
+            <div class="prvek">
+                    <label for="prikryti">Potřebuje přikrýt?</label>
+                    <select onchange="hledat()" id="prikryti">
+                        <option value=""></option>
+                        <option value="A">ano</option>
+                        <option value="N">ne</option>
+                    </select>
+            </div>
+
+            <div class="prvek">
+                    <label for="vysev">Potřebuje předpěstovat?</label>
+                    <select onchange="hledat()" id="vysev">
+                        <option value=""></option>
+                        <option value="A">ano</option>
+                        <option value="N">ne</option>
+                    </select>
+            </div>
+    </div>
+  </form>
+  <div class="tlacitka">
+          <button onclick="ukazVse()">Ukaž vše</button>
+  </div>    
+
   <!-- Do tohoto div se bude generovat HTML se seznamem zeleniny-->
   <div id="detail"></div>
 
@@ -20,7 +112,8 @@
     souborů uvnitř složky /src po spuštění Webpacku.
     Návod najdeš v souboru README.md
   -->
+  <script src="src/zelenina-data.js"></script>
   <script src="dist/app.bundle.js"></script>
-
+  
 </body>
 </html>
