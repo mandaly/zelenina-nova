@@ -4,13 +4,15 @@ export default class Vypis {
 
     constructor() {
       this.currentZelenina = null;
+      this.vypis = [];
     }
   
     //projdi zelenina-data a vypiš profily všech zelenin
-    zeleninaAllList(){
-        zelenina.forEach(Zelenina => {
-            console.log(Zelenina);
-            renderHTML(); //vypiš info do medailonku
+    zeleninaAllList(data){
+        data.forEach(vegetable => {
+            let zelenina = new Zelenina(vegetable.jmeno, vegetable.obrazek, vegetable.sklizeno, vegetable.vyseti, vegetable.sklizeni, vegetable.ziviny, vegetable.prikryti, vegetable.opora, vegetable.predpestovat, vegetable.pocet, vegetable.vzdalenostDelka, vegetable.vzdalenostSirka, vegetable.meziradek, vegetable.kamaradi, vegetable.nepratele)
+            this.vypis.push(zelenina);
+            zelenina.renderHTML(); //vypiš info do medailonku
         });
     }
 

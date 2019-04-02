@@ -1,5 +1,3 @@
-import Vyber from "./vyber";
-
 export default class Filtry {
 
     constructor() {

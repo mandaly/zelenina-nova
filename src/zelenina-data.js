@@ -1,4 +1,4 @@
-let zelenina = [
+export const data = [
     {
         jmeno: "pórek",
         obrazek: "porek.jpg",
