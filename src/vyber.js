@@ -1,34 +1,19 @@
-import Zelenina from "./zelenina";
+//import Zelenina from "./zelenina";
 
 export default class Vyber {
 
     constructor() {
-      this.vybranaZelenina = [];
+      this.myVegetable = [];
     }
 
-    pridejZeleninu(event){
-        if (this.vybranaZelenina !== null) { //je zelelnina už vybraná?
-            vybranaZelenina = this.vybranaZelenina.filter(zelenina => this.vybranaZelenina.jmeno === zelenina.jmeno );
-        }
-
-        if(vybranaZelelnina === null){ //ještě jsme ji nevybrali
-            this.vybranaZelenina.push(event);
-        }
-        
-        //a zvyš počet o jedna
-        this.vybranaZelelnina.pocet ++;
-        console.log(vybranaZelenina);
-    }
+    pridejZeleninu(event){ //PROC TO NEFUNGUJE?
+        this.myVegetable.push(event);
+        console.log(event);
+    }     
 
     uberZeleninu(event){
-        if(vybranaZelenina.pocet <= 0){
-            this.vybranaZelenina.splice(event);
-        }  else {
-            //sniž počet o jedna
-            this.vybranaZelelnina.pocet --
-        } 
-
-        console.log(vybranaZelenina);
+        this.myVegetable.splice(event);
+        console.log(this.myVegetable);
     }
 
 }

@@ -1,37 +1,3 @@
-export default class Zelenina {
-
-    constructor(jmeno, obrazek, sklizeno, vyseti, sklizeni, ziviny, prikryti, opora, predpestovat, pocet, vzdalenostDelka, vzdalenostSirka, meziradek, kamaradi, nepratele) {
-        this.jmeno = jmeno;
-        this.obrazek = obrazek;
-        this.sklizeno = sklizeno;
-        this.vyseti = vyseti;
-        this.sklizeni = sklizeni;
-        this.ziviny = [];
-        this.prikryti = prikryti;
-        this.opora = opora;
-        this.predpestovat = predpestovat;
-        this.pocet = pocet;
-        this.vzdalenostDelka = vzdalenostDelka;
-        this.vzdalenostSirka = vzdalenostSirka;
-        this.meziradek = meziradek;
-        this.kamaradi = [];
-        this.nepratele = [];
-        this.detail = false;
-    }
-
-    //vyrendruje medailonek a detail zeleniny
-    renderHTML(){  
-        // hlavicka s fotkou a měsícem výsevu
-        let fotoElement = document.createElement('div');
-        let imgElement = document.createElement('img');
-        fotoElement.classList.add('foto');
-        imgElement.src = "obrazky/" + this.obrazek;
-        imgElement.alt = this.jmeno;
-        imgElement.title = this.jmeno;
-
-        fotoElement.appendChild(imgElement);
-        //zeleninaDetailElement.appendChild(fotoElement);
-
         //označíme typ záhonu
         for (let i = 0; i < this.ziviny.length; i ++){
             let zahonElement = document.createElement('div');
@@ -51,22 +17,7 @@ export default class Zelenina {
             zahonElement.style.backgroundColor = barvaZahonu;
             zahonElement.style.marginTop = (i*30) + "px";
         }
-
-        //plus a mínus pro výběr zeleniny
-        let plusElement = document.createElement('div');
-        plusElement.classList.add('plus');
-        plusElement.innerText = "+";
-        //plusElement.onclick = pridejZeleninu;
-        //detailyElement.appendChild(plusElement);
-    
-        let minusElement = document.createElement('div');
-        minusElement.classList.add('minus');
-        minusElement.innerText = "-";
-        //minusElement.onclick = uberZeleninu;
-        //detailyElement.appendChild(minusElement);
-
-        //jméno zeleniny
-        let jmenoZeleniny = document.createElement("h2");
+           
 
         //co sklidit
         let radekCastZeleninyImg = document.createElement("img");

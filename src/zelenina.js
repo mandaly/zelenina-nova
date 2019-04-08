@@ -1,3 +1,5 @@
+import Vyber from "./vyber";
+
 export default class Zelenina {
 
     constructor(jmeno, obrazek, sklizeno, vyseti, sklizeni, ziviny, prikryti, opora, predpestovat, pocet, vzdalenostDelka, vzdalenostSirka, meziradek, kamaradi, nepratele) {
@@ -17,18 +19,14 @@ export default class Zelenina {
         this.kamaradi = [];
         this.nepratele = [];
         this.detail = false;
+        this.vybrano = false;
     }
 
     //vyrendruje medailonek a detail zeleniny
     renderHTML(){ 
-        this.hlavicka();
-    }
-
-    //jak předávat proměnné mezi těmi funkcemi?
-    hlavicka(){
         //div pro medailonek 
-        let zeleninaElement = document.querySelector("#detail");
-        let zeleninaDetailElement = document.createElement('div');
+        const zeleninaElement = document.querySelector("#vysledek");
+        const zeleninaDetailElement = document.createElement('div');
         zeleninaDetailElement.classList.add('zelenina');
         zeleninaElement.appendChild(zeleninaDetailElement);
 
@@ -54,15 +52,22 @@ export default class Zelenina {
         jmenoZeleniny.innerText = this.jmeno;
         detailyElement.appendChild(jmenoZeleniny);
         
-    }
-
-    plus(){
-        //plus a mínus pro výběr zeleniny
-        let plusElement = document.createElement('div');
-        plusElement.classList.add('plus');
-        plusElement.innerText = "+";
-        //plusElement.onclick = pridejZeleninu;
-        detailyElement.appendChild(plusElement);
+        //plus pro výběr zeleniny
+        if(this.vybrano){
+            //mínus pro výběr zeleniny
+            let minusElement = document.createElement('div');
+            minusElement.classList.add('minus');
+            minusElement.innerText = "-";
+            minusElement.onclick = Vyber.uberZeleninu; //PROC TO NEFUNGUJE?
+            detailyElement.appendChild(minusElement);
+        } else {
+            let plusElement = document.createElement('div');
+            plusElement.classList.add('plus');
+            plusElement.innerText = "+";
+            plusElement.onclick = Vyber.pridejZeleninu; //PROC TO NEFUNGUJE?
+            detailyElement.appendChild(plusElement);
+        }
+        
     }
   
   }
