@@ -11,6 +11,7 @@ export default function showWeather(){
             lat = position.coords.latitude;
             lon = position.coords.longitude;
             console.log(position.coords.latitude, position.coords.longitude); 
+            console.log('získal jsem souřadnice');
             //PROČ SE TO NEZOBRAZÍ?
         });
     } else {
@@ -18,6 +19,7 @@ export default function showWeather(){
     };
 
     let queryAktualni;
+    console.log('tady předpokládám, že už znám souřadnice');
     
     if (lon){
         queryAktualni = fetch(`${aktualniUrl}?APPID=${apiKey}&lat=${lat}&lon=${lon}&units=metric&lang=cz`);
@@ -26,7 +28,7 @@ export default function showWeather(){
         queryAktualni = fetch(`${aktualniUrl}?APPID=${apiKey}&q=${city}&units=metric&lang=cz`);
 
     }
-
+    console.log('hlavní program doběhl');
     queryAktualni
         .then(response => response.json())
         .then(displayWeather); //tuhle funkci zavolá, až bude splněná podmínka
