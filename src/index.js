@@ -12,7 +12,6 @@ import Predpoved from "./predpoved";
 /* založíme objekt vypis (třída Vypis) */
 let vypis = new Vypis();
 
-//předpověď počasí DOTAZ - jak se exportuje/importuje funkce? - podívat se na lekci s export/import!
 Pocasi();
 Predpoved();
 

@@ -7,7 +7,8 @@ export default function showWeather(){
 
     if ("geolocation" in navigator) {
         //geolokace je dostupná a získáme souřadnice:
-        navigator.geolocation.getCurrentPosition(position => {
+        navigator.geolocation.getCurrentPosition(
+            position => {
             lat = position.coords.latitude;
             lon = position.coords.longitude;
             console.log(position.coords.latitude, position.coords.longitude); 
@@ -19,7 +20,6 @@ export default function showWeather(){
     };
 
     let queryAktualni;
-    console.log('tady předpokládám, že už znám souřadnice');
     
     if (lon){
         queryAktualni = fetch(`${aktualniUrl}?APPID=${apiKey}&lat=${lat}&lon=${lon}&units=metric&lang=cz`);
@@ -28,7 +28,7 @@ export default function showWeather(){
         queryAktualni = fetch(`${aktualniUrl}?APPID=${apiKey}&q=${city}&units=metric&lang=cz`);
 
     }
-    console.log('hlavní program doběhl');
+    
     queryAktualni
         .then(response => response.json())
         .then(displayWeather); //tuhle funkci zavolá, až bude splněná podmínka
