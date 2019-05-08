@@ -7,13 +7,11 @@ export default function showWeather(){
 
     if ("geolocation" in navigator) {
         //geolokace je dostupná a získáme souřadnice:
-        navigator.geolocation.getCurrentPosition(
-            position => {
+        navigator.geolocation.getCurrentPosition(position => {
             lat = position.coords.latitude;
             lon = position.coords.longitude;
             console.log(position.coords.latitude, position.coords.longitude); 
             console.log('získal jsem souřadnice');
-            //PROČ SE TO NEZOBRAZÍ?
         });
     } else {
         console.log ("Smůla");

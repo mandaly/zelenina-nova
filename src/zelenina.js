@@ -30,6 +30,8 @@ export default class Zelenina {
         zeleninaDetailElement.classList.add('zelenina');
         zeleninaElement.appendChild(zeleninaDetailElement);
 
+        console.log(this.ziviny);
+
         // hlavicka s fotkou a měsícem výsevu
         let fotoElement = document.createElement('div');
         let imgElement = document.createElement('img');
