@@ -2,10 +2,12 @@ var path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
+  entry: {
+    app: './src/index.js'
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'app.bundle.js'
+    filename: '[name].bundle.js'
   },
   devtool: 'source-map',
   devServer: {
@@ -20,7 +22,14 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
+            presets: [
+              [
+                '@babel/preset-env',
+                {
+                  'useBuiltIns': 'usage'
+                }
+              ]
+            ]
           }
         }
       }

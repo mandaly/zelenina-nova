@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 /*import Animal from "./animal.js";
 import Dog from "./dog.js";
@@ -56,4 +57,25 @@ knihovna.listAllBooks();
 knihovna.startReadingNextBook();
 
 knihovna.listAllBooks();
+=======
+"use strict";
+
+/* import modulů */
+import {data} from "./zelenina-data"; //databáze zeleniny
+import Vypis from './vypis'; //výpis zelenin
+import Pocasi from "./pocasi";
+import Predpoved from "./predpoved";
+//import Filtry from './filtry';
+//import Vyber from './vyber';
+//import Zelenina from './zelenina'; //třída zeleniny
+
+/* založíme objekt vypis (třída Vypis) */
+let vypis = new Vypis();
+
+Pocasi();
+Predpoved();
+
+//vypíšeme všechny zeleniny DOTAZ - do polí detailu se nevloží data (kamarádi, živiny a pod)
+vypis.zeleninaAllList(data);
+>>>>>>> a594432fc748e352fcaf015858fa0f58355f2318
 
